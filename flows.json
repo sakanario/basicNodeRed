@@ -1,0 +1,470 @@
+[
+    {
+        "id": "3994e26c076367b0",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "475dbecd1d4e1b6f",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "70745c1be3a44a52",
+        "type": "tab",
+        "label": "database mysql",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "0fd3b0bc68b093e8",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "76b3593f3ae41627",
+        "type": "MySQLdatabase",
+        "d": true,
+        "name": "hotel_saya",
+        "host": "mysql_ku",
+        "port": "3306",
+        "db": "sys",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "fe2b0c49123c24f0",
+        "type": "debug",
+        "z": "3994e26c076367b0",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "cde09a4799b01ae9",
+        "type": "inject",
+        "z": "3994e26c076367b0",
+        "name": "node ku",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 12 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Halo bunda",
+        "payloadType": "str",
+        "x": 140,
+        "y": 280,
+        "wires": [
+            [
+                "6c11bd52153b682b"
+            ]
+        ]
+    },
+    {
+        "id": "6c11bd52153b682b",
+        "type": "function",
+        "z": "3994e26c076367b0",
+        "name": "",
+        "func": "var newString = msg.payload.replace(\"bunda\", \"momy!\")\n\nmsg.payload = newString\n\n// return { payload : newString }\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 280,
+        "wires": [
+            [
+                "fe2b0c49123c24f0"
+            ]
+        ]
+    },
+    {
+        "id": "d43e4166ccb65e84",
+        "type": "inject",
+        "z": "3994e26c076367b0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "test",
+        "payloadType": "global",
+        "x": 130,
+        "y": 420,
+        "wires": [
+            [
+                "e120c03491775080"
+            ]
+        ]
+    },
+    {
+        "id": "e120c03491775080",
+        "type": "function",
+        "z": "3994e26c076367b0",
+        "name": "",
+        "func": "value = flow.get('count')||0;\n\nvalue++;\nflow.set('count',value);\n\n// return { payload : value };\nmsg.payload = flow.get('count')\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 420,
+        "wires": [
+            [
+                "bf0eef934d103a39"
+            ]
+        ]
+    },
+    {
+        "id": "bf0eef934d103a39",
+        "type": "debug",
+        "z": "3994e26c076367b0",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "da3e4b41553040c9",
+        "type": "inject",
+        "z": "3994e26c076367b0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 500,
+        "wires": [
+            [
+                "a29604b168f0686e"
+            ]
+        ]
+    },
+    {
+        "id": "a29604b168f0686e",
+        "type": "function",
+        "z": "3994e26c076367b0",
+        "name": "",
+        "func": "flow.set('count',0);\nreturn {payload : flow.get('count')};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 500,
+        "wires": [
+            [
+                "bbb31b070a75795f"
+            ]
+        ]
+    },
+    {
+        "id": "88dc9b97e0c0529e",
+        "type": "link in",
+        "z": "475dbecd1d4e1b6f",
+        "name": "",
+        "links": [
+            "bbb31b070a75795f"
+        ],
+        "x": 105,
+        "y": 240,
+        "wires": [
+            [
+                "4d46a7a07e31a130"
+            ]
+        ]
+    },
+    {
+        "id": "217e135994b33680",
+        "type": "debug",
+        "z": "475dbecd1d4e1b6f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "bbb31b070a75795f",
+        "type": "link out",
+        "z": "3994e26c076367b0",
+        "name": "contoh",
+        "links": [
+            "88dc9b97e0c0529e"
+        ],
+        "x": 575,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "4d46a7a07e31a130",
+        "type": "function",
+        "z": "475dbecd1d4e1b6f",
+        "name": "",
+        "func": "msg.payload = msg.payload + 12\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 260,
+        "wires": [
+            [
+                "217e135994b33680"
+            ]
+        ]
+    },
+    {
+        "id": "e83ee1696b62a059",
+        "type": "inject",
+        "z": "70745c1be3a44a52",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "show tables;",
+        "payloadType": "date",
+        "x": 180,
+        "y": 260,
+        "wires": [
+            [
+                "f8384008516d0141"
+            ]
+        ]
+    },
+    {
+        "id": "f8384008516d0141",
+        "type": "mysql",
+        "z": "70745c1be3a44a52",
+        "mydb": "76b3593f3ae41627",
+        "name": "",
+        "x": 370,
+        "y": 160,
+        "wires": [
+            [
+                "72174c24c2c5a99f"
+            ]
+        ]
+    },
+    {
+        "id": "72174c24c2c5a99f",
+        "type": "debug",
+        "z": "70745c1be3a44a52",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "cdb26a845658c1f2",
+        "type": "function",
+        "z": "70745c1be3a44a52",
+        "name": "",
+        "func": "var require = global.get('require');\nvar mysql = require('mysql');\n\n// var mysql = global.get(\"mysql\");\n// var mysql = require(\"mysql2\");\n\nvar con = mysql.createConnection({\n  host: \"mysql_ku\",\n  user: \"root\",\n  password: \"123\"\n});\n\n\n// msg.payload = con.connect(function(err) {\n//   if (err) throw err;\n//   console.log(\"Connected!\");\n// });\n\nmsg.payload = [];\nmsg.payload[0] = con.connect();\n\nmsg.payload[1] = con.query(\n    \"show databases\"\n  );\n// msg.payload = con;\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 360,
+        "wires": [
+            [
+                "3630b80ac78c00ad"
+            ]
+        ]
+    },
+    {
+        "id": "f26b471d165e1fb1",
+        "type": "inject",
+        "z": "70745c1be3a44a52",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "test",
+        "payloadType": "str",
+        "x": 160,
+        "y": 360,
+        "wires": [
+            [
+                "cdb26a845658c1f2"
+            ]
+        ]
+    },
+    {
+        "id": "3630b80ac78c00ad",
+        "type": "debug",
+        "z": "70745c1be3a44a52",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "02699c8660beb0fa",
+        "type": "inject",
+        "z": "0fd3b0bc68b093e8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "75fa84135bae4766"
+            ]
+        ]
+    },
+    {
+        "id": "75fa84135bae4766",
+        "type": "http request",
+        "z": "0fd3b0bc68b093e8",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.nytimes.com/svc/books/v3/lists/current/names.json?api-key=MdZc0WYGaqdQjzojBELdI0z3vIWpGG6l",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 310,
+        "y": 220,
+        "wires": [
+            [
+                "f1b3fab4f41233d3"
+            ]
+        ]
+    },
+    {
+        "id": "f1b3fab4f41233d3",
+        "type": "debug",
+        "z": "0fd3b0bc68b093e8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 220,
+        "wires": []
+    }
+]
