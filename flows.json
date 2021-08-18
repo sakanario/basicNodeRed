@@ -2,14 +2,14 @@
     {
         "id": "3994e26c076367b0",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "basic",
         "disabled": false,
         "info": ""
     },
     {
         "id": "475dbecd1d4e1b6f",
         "type": "tab",
-        "label": "Flow 2",
+        "label": "link flow",
         "disabled": false,
         "info": ""
     },
@@ -23,7 +23,7 @@
     {
         "id": "0fd3b0bc68b093e8",
         "type": "tab",
-        "label": "Flow 3",
+        "label": "Web API",
         "disabled": false,
         "info": ""
     },
@@ -438,7 +438,7 @@
         "method": "GET",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "https://api.nytimes.com/svc/books/v3/lists/current/names.json?api-key=MdZc0WYGaqdQjzojBELdI0z3vIWpGG6l",
+        "url": "https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=MdZc0WYGaqdQjzojBELdI0z3vIWpGG6l",
         "tls": "",
         "persist": false,
         "proxy": "",
