@@ -30,12 +30,11 @@
     {
         "id": "76b3593f3ae41627",
         "type": "MySQLdatabase",
-        "d": true,
-        "name": "hotel_saya",
-        "host": "mysql_ku",
+        "name": "hotel",
+        "host": "mysql2",
         "port": "3306",
-        "db": "sys",
-        "tz": "",
+        "db": "hotel",
+        "tz": "GMT+7",
         "charset": "UTF8"
     },
     {
@@ -282,7 +281,7 @@
         "id": "e83ee1696b62a059",
         "type": "inject",
         "z": "70745c1be3a44a52",
-        "name": "",
+        "name": "Query",
         "props": [
             {
                 "p": "payload"
@@ -296,27 +295,13 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "show tables;",
+        "topic": "select * from Persons;",
         "payloadType": "date",
-        "x": 180,
+        "x": 130,
         "y": 260,
         "wires": [
             [
                 "f8384008516d0141"
-            ]
-        ]
-    },
-    {
-        "id": "f8384008516d0141",
-        "type": "mysql",
-        "z": "70745c1be3a44a52",
-        "mydb": "76b3593f3ae41627",
-        "name": "",
-        "x": 370,
-        "y": 160,
-        "wires": [
-            [
-                "72174c24c2c5a99f"
             ]
         ]
     },
@@ -466,5 +451,19 @@
         "x": 550,
         "y": 220,
         "wires": []
+    },
+    {
+        "id": "f8384008516d0141",
+        "type": "mysql",
+        "z": "70745c1be3a44a52",
+        "mydb": "76b3593f3ae41627",
+        "name": "",
+        "x": 350,
+        "y": 160,
+        "wires": [
+            [
+                "72174c24c2c5a99f"
+            ]
+        ]
     }
 ]
