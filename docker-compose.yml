@@ -1,0 +1,29 @@
+# version: '3'
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - /home/satria/Documents/code-project/mysql/mysql2-data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+    container_name: mysql2
+    mem_limit: 500m
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  nodered:
+    image: nodered/node-red
+    ports:
+      - "1880:1880"
+    mem_limit: 500m
+    volumes:
+      - /home/satria/Documents/code-project/node-red/node-red-data-3:/data
+    environment:
+    - NODE_RED_ENABLE_PROJECTS=true
+    container_name: nred-ku-3
