@@ -465,5 +465,32 @@
                 "72174c24c2c5a99f"
             ]
         ]
+    },
+    {
+        "id": "51079fa5c089f6bb",
+        "type": "inject",
+        "z": "0fd3b0bc68b093e8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 160,
+        "wires": [
+            []
+        ]
     }
 ]
