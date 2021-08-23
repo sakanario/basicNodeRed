@@ -28,6 +28,13 @@
         "info": ""
     },
     {
+        "id": "d5bfc8cf5d42d546",
+        "type": "tab",
+        "label": "Email",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "76b3593f3ae41627",
         "type": "MySQLdatabase",
         "name": "hotel",
@@ -36,6 +43,120 @@
         "db": "hotel",
         "tz": "GMT+7",
         "charset": "UTF8"
+    },
+    {
+        "id": "8e97fca67abf7e39",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "8063c46eaeb88af3",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "e82458cf6a87c675",
+        "type": "ui_group",
+        "name": "first-dashboard",
+        "tab": "8e97fca67abf7e39",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
     },
     {
         "id": "fe2b0c49123c24f0",
@@ -310,7 +431,7 @@
         "type": "debug",
         "z": "70745c1be3a44a52",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -432,7 +553,8 @@
         "y": 220,
         "wires": [
             [
-                "f1b3fab4f41233d3"
+                "af94e4a985250867",
+                "bfdf778b872ad2a0"
             ]
         ]
     },
@@ -440,16 +562,17 @@
         "id": "f1b3fab4f41233d3",
         "type": "debug",
         "z": "0fd3b0bc68b093e8",
-        "name": "",
-        "active": true,
+        "name": "API Debug",
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 550,
-        "y": 220,
+        "x": 730,
+        "y": 300,
         "wires": []
     },
     {
@@ -465,5 +588,99 @@
                 "72174c24c2c5a99f"
             ]
         ]
+    },
+    {
+        "id": "ea535cca6e144b62",
+        "type": "e-mail",
+        "z": "d5bfc8cf5d42d546",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "satrialaksana12@gmail.com",
+        "dname": "Sakanario",
+        "x": 540,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "2113dbd118785144",
+        "type": "inject",
+        "z": "d5bfc8cf5d42d546",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "node red lagi",
+        "payload": "ini pake app password",
+        "payloadType": "str",
+        "x": 170,
+        "y": 280,
+        "wires": [
+            [
+                "ea535cca6e144b62"
+            ]
+        ]
+    },
+    {
+        "id": "af94e4a985250867",
+        "type": "function",
+        "z": "0fd3b0bc68b093e8",
+        "name": "",
+        "func": "\nmsg.payload = msg.payload.results[0]\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 300,
+        "wires": [
+            [
+                "f1b3fab4f41233d3",
+                "ad5315978043f159"
+            ]
+        ]
+    },
+    {
+        "id": "bfdf778b872ad2a0",
+        "type": "debug",
+        "z": "0fd3b0bc68b093e8",
+        "name": "full api debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "ad5315978043f159",
+        "type": "e-mail",
+        "z": "0fd3b0bc68b093e8",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "satrialaksana12@gmail.com",
+        "dname": "Sakanario",
+        "x": 740,
+        "y": 380,
+        "wires": []
     }
 ]
